@@ -7,10 +7,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_MainWindow(object):
-
     def setupUi(self, MainWindow):
         """Create the UI."""
-
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(425, 75)
         icon = QtGui.QIcon()
@@ -41,12 +39,8 @@ class Ui_MainWindow(object):
 
     def get_data(self):
         """Connect the code to the "دانلود" pushbutton."""
-
         def game_s_link(team):
-            """
-            Return the link that contains 
-            the game which the user is looking for.
-            """
+            """Return the link that contains the game which the user is looking for."""
             # reads the html page
             html = urllib.request.urlopen(url)
             soup = BeautifulSoup(html)
@@ -59,7 +53,6 @@ class Ui_MainWindow(object):
 
         def IRI_to_Ascii(link):
             """Convert a URL containing non-ascii characters(IRI) to a plain ASCII."""
-
             iri = quote(link.split("/")[-1])
             url_without_iri = link.split("/")[:-1]
             converted_url = "/".join(url_without_iri) + "/" + iri
@@ -67,7 +60,6 @@ class Ui_MainWindow(object):
 
         def download_link():
             """Etract and returns the download's link from the game's link."""
-
             html = urllib.request.urlopen(IRI_to_Ascii(game_s_link(team)))
             soup = BeautifulSoup(html)
             for a in soup.find_all('a', href=True):
@@ -76,10 +68,7 @@ class Ui_MainWindow(object):
             return video_url
 
         def download_video():
-            """Create a folder on user's desktop and 
-            saves the video in the created folder.
-            """
-
+            """Create a folder on user's desktop and saves the video in the created folder."""
             # webbrowser.open(download_link())
             desktop = os.path.join(os.path.join(
                 os.environ['USERPROFILE']), 'Desktop')
@@ -94,6 +83,7 @@ class Ui_MainWindow(object):
         download_video()
 
     def retranslateUi(self, MainWindow):
+        """Translae to Farsi."""
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate(
             "MainWindow", "دانلود کننده‌ی آخرین بازی تیم‌های فوتبال"))

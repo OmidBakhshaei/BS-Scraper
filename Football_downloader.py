@@ -6,10 +6,7 @@ from urllib.parse import quote
 
 
 def game_s_link(team):
-    """
-    Returns the link that contains 
-    the game which the user is looking for.
-    """
+    """Return the link that contains the game which the user is looking for."""
     # sends request and reads the html
     html = urllib.request.urlopen(url)
     # parses the html
@@ -23,10 +20,7 @@ def game_s_link(team):
 
 
 def IRI_to_Ascii(link):
-    """
-    Converts a URL containing non-ascii characters(IRI) to a plain ASCII.
-    """
-
+    """Convert a URL containing non-ascii characters(IRI) to a plain ASCII."""
     iri = quote(link.split("/")[-1])
     url_without_iri = link.split("/")[:-1]
     converted_url = "/".join(url_without_iri) + "/" + iri
@@ -34,9 +28,7 @@ def IRI_to_Ascii(link):
 
 
 def download_link():
-    """
-    Extracts and returns the download's link from the game's link
-    """
+    """Extract and return the download's link from the game's link."""
     # sends request and reads the html
     html = urllib.request.urlopen(IRI_to_Ascii(game_s_link(team)))
     # parses the html
@@ -50,11 +42,7 @@ def download_link():
 
 
 def download_video():
-    """
-    Creates a folder on user's desktop and 
-    saves the video in the created folder.
-    """
-
+    """Create a folder on user's desktop and saves the video in the created folder."""
     desktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
     newpath = os.path.join(desktop, "Varzesh3")
     if not os.path.exists(newpath):
