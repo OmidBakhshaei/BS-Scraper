@@ -40,7 +40,14 @@ class Ui_MainWindow(object):
     def get_data(self):
         """Connect the code to the "دانلود" pushbutton."""
         def game_s_link(team):
-            """Return the link that contains the game which the user is looking for."""
+            """Return the link that contains the game which the user is looking for.
+            
+            Args:
+                team (str): The team which the user wants to download its game
+
+            Returns:
+                str: the link which contains the video of the game
+            """
             # reads the html page
             html = urllib.request.urlopen(url)
             soup = BeautifulSoup(html)
@@ -52,14 +59,21 @@ class Ui_MainWindow(object):
                     return new_url
 
         def IRI_to_Ascii(link):
-            """Convert a URL containing non-ascii characters(IRI) to a plain ASCII."""
+            """Convert a URL containing non-ascii characters(IRI) to a plain ASCII.
+            
+            Args:
+                link (str): link to convert
+
+            Returns:
+                str: ASCII link
+            """
             iri = quote(link.split("/")[-1])
             url_without_iri = link.split("/")[:-1]
             converted_url = "/".join(url_without_iri) + "/" + iri
             return converted_url
 
         def download_link():
-            """Etract and returns the download's link from the game's link."""
+            """Extract and return the download's url from the game's url."""
             html = urllib.request.urlopen(IRI_to_Ascii(game_s_link(team)))
             soup = BeautifulSoup(html)
             for a in soup.find_all('a', href=True):
@@ -68,7 +82,7 @@ class Ui_MainWindow(object):
             return video_url
 
         def download_video():
-            """Create a folder on user's desktop and saves the video in the created folder."""
+            """Create a folder on user's desktop and save the video in the created folder."""
             # webbrowser.open(download_link())
             desktop = os.path.join(os.path.join(
                 os.environ['USERPROFILE']), 'Desktop')
@@ -83,7 +97,7 @@ class Ui_MainWindow(object):
         download_video()
 
     def retranslateUi(self, MainWindow):
-        """Translae to Farsi."""
+        """Translate to Farsi."""
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate(
             "MainWindow", "دانلود کننده‌ی آخرین بازی تیم‌های فوتبال"))

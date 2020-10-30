@@ -6,7 +6,14 @@ from urllib.parse import quote
 
 
 def game_s_link(team):
-    """Return the link that contains the game which the user is looking for."""
+    """Return the link that contains the game which the user is looking for.
+            
+    Args:
+        team (str): The team which the user wants to download its game
+
+    Returns:
+        str: the link which contains the video of the game
+    """
     # sends request and reads the html
     html = urllib.request.urlopen(url)
     # parses the html
@@ -20,7 +27,14 @@ def game_s_link(team):
 
 
 def IRI_to_Ascii(link):
-    """Convert a URL containing non-ascii characters(IRI) to a plain ASCII."""
+    """Convert a URL containing non-ascii characters(IRI) to a plain ASCII.
+    
+    Args:
+        link (str): link to convert
+        
+    Returns:
+        str: ASCII link
+    """
     iri = quote(link.split("/")[-1])
     url_without_iri = link.split("/")[:-1]
     converted_url = "/".join(url_without_iri) + "/" + iri
@@ -28,7 +42,7 @@ def IRI_to_Ascii(link):
 
 
 def download_link():
-    """Extract and return the download's link from the game's link."""
+    """Extract and return the download's url from the game's url."""
     # sends request and reads the html
     html = urllib.request.urlopen(IRI_to_Ascii(game_s_link(team)))
     # parses the html
@@ -42,13 +56,15 @@ def download_link():
 
 
 def download_video():
-    """Create a folder on user's desktop and saves the video in the created folder."""
+    """Create a folder on user's desktop named "Varzesh3" 
+    and save the video in the created folder.
+    """
     desktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
     newpath = os.path.join(desktop, "Varzesh3")
     if not os.path.exists(newpath):
         os.makedirs(newpath)
     filename_and_path = os.path.join(newpath, f"{team}.mp4")
-    urllib.request.urlretrieve(download_link(), filename_and_path)
+    # urllib.request.urlretrieve(download_link(), filename_and_path)
 
 
 url = "https://video.varzesh3.com"
