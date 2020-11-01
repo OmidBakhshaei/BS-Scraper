@@ -41,7 +41,7 @@ class Ui_MainWindow(object):
         """Connect the code to the "دانلود" pushbutton."""
         def game_s_link(team):
             """Return the link that contains the game which the user is looking for.
-            
+
             Args:
                 team (str): The team which the user wants to download its game
 
@@ -60,7 +60,7 @@ class Ui_MainWindow(object):
 
         def IRI_to_Ascii(link):
             """Convert a URL containing non-ascii characters(IRI) to a plain ASCII.
-            
+
             Args:
                 link (str): link to convert
 
@@ -83,7 +83,6 @@ class Ui_MainWindow(object):
 
         def download_video():
             """Create a folder on user's desktop and save the video in the created folder."""
-            # webbrowser.open(download_link())
             desktop = os.path.join(os.path.join(
                 os.environ['USERPROFILE']), 'Desktop')
             newpath = os.path.join(desktop, "Varzesh3")
