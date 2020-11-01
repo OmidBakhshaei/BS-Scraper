@@ -1,7 +1,7 @@
 # Football Downloader
 
 
-_Football Downloader_ is a web scraper built with Python which downloads the highlights of the latest game of a soccer team from an [Iranian website](https://varzesh3.com/).
+_Football Downloader_ is a web scraper built with Python which downloads a video file of the highlights of the latest game of a soccer team from an [Iranian website](https://varzesh3.com/).
 It comes with a user interface where you can easily write the name of the team and download its last match's highlights.
 
 If you do not have time for a 90 minutes football match but you would like to watch its highlights later in less than 10 minutes **without knowing the result**, You will love _Football Downloader_!
