@@ -39,7 +39,7 @@ class Ui_MainWindow(object):
 
     def get_data(self):
         """Connect the code to the "دانلود" pushbutton."""
-        def game_s_link(team):
+        def get_game_s_url(team):
             """Return the link that contains the game which the user is looking for.
 
             Args:
@@ -72,14 +72,14 @@ class Ui_MainWindow(object):
             converted_url = "/".join(url_without_iri) + "/" + iri
             return converted_url
 
-        def download_link():
+        def get_video_s_url():
             """Extract and return the download's url from the game's url."""
-            html = urllib.request.urlopen(IRI_to_Ascii(game_s_link(team)))
+            html = urllib.request.urlopen(IRI_to_Ascii(get_game_s_url(team)))
             soup = BeautifulSoup(html)
             for a in soup.find_all('a', href=True):
                 if ".mp4" in a['href']:
-                    video_url = a['href']
-            return video_url
+                    get_video_s_url = a['href']
+            return get_video_s_url
 
         def download_video():
             """Create a folder on user's desktop and save the video in the created folder."""
@@ -89,7 +89,7 @@ class Ui_MainWindow(object):
             if not os.path.exists(newpath):
                 os.makedirs(newpath)
             filename_and_path = os.path.join(newpath, f"{team}.mp4")
-            urllib.request.urlretrieve(download_link(), filename_and_path)
+            urllib.request.urlretrieve(get_video_s_url(), filename_and_path)
 
         url = "https://video.varzesh3.com"
         team = self.lineEdit.text()
