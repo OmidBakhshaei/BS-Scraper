@@ -103,9 +103,9 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "دانلود"))
         self.lineEdit.setText(_translate("MainWindow", "لیورپول"))
         self.label.setText(_translate(
-            "MainWindow", "نام تیم مورد نظر را وارد کنید :"))
+            "MainWindow", "نام تیم مورد نظر را وارد کنید:"))
 
-
+        
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
