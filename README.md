@@ -37,5 +37,5 @@ by following the four steps a folder named **Varzesh3** would be created on your
 ---
 
 <p align="center">
-  <img src="https://github.com/OmidBakhshaei/BS-Scraper/blob/master/img/Module_Football_downloader.jpg" alt="Original code" width="800">
+  <img src="https://github.com/OmidBakhshaei/BS-Scraper/blob/master/img/Module.jpg" alt="Original code" width="800">
 </p>
